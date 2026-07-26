@@ -1,65 +1,6 @@
 {
   "locations": [
-    {
-      "lat": 10.6324153,
-      "lng": 76.8622118,
-      "city": "Chennai",
-      "region": "Tamil Nadu",
-      "country": "India",
-      "isp": "Cloudflare, Inc.",
-      "ip": "172.69.129.147",
-      "method": "GPS",
-      "accuracy": 20,
-      "timestamp": "2026-07-26T20:20:43.992Z"
-    },
-    {
-      "lat": 10.6324151,
-      "lng": 76.8622117,
-      "city": "Chennai",
-      "region": "Tamil Nadu",
-      "country": "India",
-      "isp": "Cloudflare, Inc.",
-      "ip": "172.69.131.174",
-      "method": "GPS",
-      "accuracy": 20,
-      "timestamp": "2026-07-26T20:22:55.300Z"
-    },
-    {
-      "lat": 10.632914,
-      "lng": 76.86412,
-      "city": "Chennai",
-      "region": "Tamil Nadu",
-      "country": "India",
-      "isp": "Cloudflare, Inc.",
-      "ip": "162.158.54.188",
-      "method": "GPS",
-      "accuracy": 212,
-      "timestamp": "2026-07-26T20:29:30.449Z"
-    },
-    {
-      "lat": 10.632914,
-      "lng": 76.86412,
-      "city": "Chennai",
-      "region": "Tamil Nadu",
-      "country": "India",
-      "isp": "Cloudflare, Inc.",
-      "ip": "172.69.131.174",
-      "method": "GPS",
-      "accuracy": 212,
-      "timestamp": "2026-07-26T20:30:30.248Z"
-    },
-    {
-      "lat": 10.632914,
-      "lng": 76.86412,
-      "city": "Chennai",
-      "region": "Tamil Nadu",
-      "country": "India",
-      "isp": "Cloudflare, Inc.",
-      "ip": "172.69.131.174",
-      "method": "GPS",
-      "accuracy": 212,
-      "timestamp": "2026-07-26T20:32:58.370Z"
-    },
+   
     {
       "lat": 10.632914,
       "lng": 76.86412,
