@@ -35,6 +35,18 @@
       "method": "GPS",
       "accuracy": 212,
       "timestamp": "2026-07-26T18:57:05.449Z"
+    },
+    {
+      "lat": 0,
+      "lng": 0,
+      "city": "Palakkad",
+      "region": "Kerala",
+      "country": "IN",
+      "isp": "AS9829 National Internet Backbone",
+      "ip": "59.88.17.122",
+      "method": "IP",
+      "accuracy": "IP-only",
+      "timestamp": "2026-07-26T19:03:55.160Z"
     }
   ]
 }
