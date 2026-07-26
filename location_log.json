@@ -299,6 +299,18 @@
       "method": "GPS",
       "accuracy": 3,
       "timestamp": "2026-07-26T19:35:31.501Z"
+    },
+    {
+      "lat": 10.6325844,
+      "lng": 76.8621512,
+      "city": "Chennai",
+      "region": "Tamil Nadu",
+      "country": "IN",
+      "isp": "AS13335 Cloudflare, Inc.",
+      "ip": "162.158.55.67",
+      "method": "GPS",
+      "accuracy": 3,
+      "timestamp": "2026-07-26T19:35:33.595Z"
     }
   ]
 }
