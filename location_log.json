@@ -1,5 +1,16 @@
 {
   "locations": [
-   
+    {
+      "lat": 0,
+      "lng": 0,
+      "city": "Chennai",
+      "region": "Tamil Nadu",
+      "country": "India",
+      "isp": "Cloudflare, Inc.",
+      "ip": "162.158.54.189",
+      "method": "IP",
+      "accuracy": "IP-only",
+      "timestamp": "2026-07-26T19:23:38.565Z"
+    }
   ]
 }
