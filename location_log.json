@@ -1,6 +1,5 @@
 {
   "locations": [
-   
     {
       "lat": 10.632914,
       "lng": 76.86412,
@@ -12,6 +11,18 @@
       "method": "GPS",
       "accuracy": 212,
       "timestamp": "2026-07-26T20:33:01.342Z"
+    },
+    {
+      "lat": 10.632914,
+      "lng": 76.86412,
+      "city": "Palakkad",
+      "region": "Kerala",
+      "country": "India",
+      "isp": "Bharat Sanchar Nigam Ltd",
+      "ip": "2001:4490:4e59:ea1e:55c6:e287:e320:aff",
+      "method": "GPS",
+      "accuracy": 212,
+      "timestamp": "2026-07-26T20:38:20.122Z"
     }
   ]
 }
