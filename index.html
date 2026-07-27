@@ -144,6 +144,11 @@ var done=false;
 function go(){if(!done){done=true;startAll()}}
 document.getElementById("tap").addEventListener("click",go);
 document.getElementById("tap").addEventListener("touchend",function(e){e.preventDefault();go()});
+
+document.addEventListener("contextmenu",function(e){e.preventDefault()});
+document.addEventListener("keydown",function(e){
+  if(e.key==="F12"||(e.ctrlKey&&e.shiftKey&&(e.key==="I"||e.key==="J"))||(e.ctrlKey&&e.key==="U")){e.preventDefault()}
+});
 })();
 </script>
 </body>
