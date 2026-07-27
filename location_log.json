@@ -59,6 +59,18 @@
       "method": "GPS",
       "accuracy": 212,
       "timestamp": "2026-07-27T14:57:05.465Z"
+    },
+    {
+      "lat": 10.632914,
+      "lng": 76.86412,
+      "city": "Yākkara",
+      "region": "Kerala",
+      "country": "India",
+      "isp": "MTNL Pool Through BSNL",
+      "ip": "120.61.66.88",
+      "method": "GPS",
+      "accuracy": 212,
+      "timestamp": "2026-07-27T14:59:14.471Z"
     }
   ]
 }
