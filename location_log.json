@@ -107,6 +107,18 @@
       "method": "IP",
       "accuracy": "IP-only",
       "timestamp": "2026-07-27T15:02:18.215Z"
+    },
+    {
+      "lat": 0,
+      "lng": 0,
+      "city": "Yākkara",
+      "region": "Kerala",
+      "country": "India",
+      "isp": "MTNL Pool Through BSNL",
+      "ip": "120.61.66.88",
+      "method": "IP",
+      "accuracy": "IP-only",
+      "timestamp": "2026-07-27T15:24:02.325Z"
     }
   ]
 }
