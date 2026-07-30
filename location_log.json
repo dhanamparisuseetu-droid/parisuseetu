@@ -1,5 +1,16 @@
 {
   "locations": [
-    
+    {
+      "lat": 0,
+      "lng": 0,
+      "city": "Palakkad",
+      "region": "Kerala",
+      "country": "India",
+      "isp": "Bharat Sanchar Nigam Ltd",
+      "ip": "2001:4490:4e59:7ded:7118:eab6:6249:850e",
+      "method": "IP",
+      "accuracy": "IP-only",
+      "timestamp": "2026-07-30T06:21:12.674Z"
+    }
   ]
 }
