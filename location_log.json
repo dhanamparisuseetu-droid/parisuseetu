@@ -359,6 +359,14 @@
       "method": "GPS",
       "accuracy": 212,
       "timestamp": "2026-07-31T16:19:49.601Z"
+    },
+    {
+      "lat": 10.632914,
+      "lng": 76.86412,
+      "city": "unknown",
+      "method": "GPS",
+      "accuracy": 212,
+      "timestamp": "2026-07-31T16:22:43.139Z"
     }
   ]
 }
