@@ -415,6 +415,18 @@
       "method": "IP",
       "accuracy": "IP-only",
       "timestamp": "2026-09-18T15:41:19.162Z"
+    },
+    {
+      "lat": 0,
+      "lng": 0,
+      "city": "Palakkad",
+      "region": "Kerala",
+      "country": "India",
+      "isp": "MTNL Pool Through BSNL",
+      "ip": "120.61.1.21",
+      "method": "IP",
+      "accuracy": "IP-only",
+      "timestamp": "2026-09-18T15:44:19.059Z"
     }
   ]
 }
